@@ -12,6 +12,7 @@
 namespace Symfony\Bundle\AsseticBundle\Twig;
 
 use Assetic\Asset\AssetInterface;
+use Assetic\Extension\Twig\AsseticNode;
 use Assetic\Extension\Twig\AsseticTokenParser as BaseAsseticTokenParser;
 use Symfony\Bundle\AsseticBundle\Exception\InvalidBundleException;
 use Symfony\Bundle\FrameworkBundle\Templating\TemplateReference;
@@ -19,32 +20,28 @@ use Symfony\Component\Templating\TemplateNameParserInterface;
 use Twig\Node\Node;
 use Twig\NodeInterface;
 use Twig\Token;
-use Assetic\Extension\Twig\AsseticNode;
+
 /**
  * Assetic token parser.
  *
  * @author Kris Wallsmith <kris@symfony.com>
  */
-class AsseticTokenParser extends BaseAsseticTokenParser
-{
+class AsseticTokenParser extends BaseAsseticTokenParser {
     /**
      * @var TemplateNameParserInterface|null
      */
     private $templateNameParser;
     private $enabledBundles;
 
-    public function setTemplateNameParser(TemplateNameParserInterface $templateNameParser)
-    {
+    public function setTemplateNameParser(TemplateNameParserInterface $templateNameParser) {
         $this->templateNameParser = $templateNameParser;
     }
 
-    public function setEnabledBundles(array $enabledBundles = null)
-    {
+    public function setEnabledBundles(array $enabledBundles = null) {
         $this->enabledBundles = $enabledBundles;
     }
 
-    public function parse(\Twig\Token $token)
-    {
+    public function parse(Token $token): Node {
         if ($this->templateNameParser && is_array($this->enabledBundles)) {
             // check the bundle
             $templateRef = null;
@@ -58,7 +55,7 @@ class AsseticTokenParser extends BaseAsseticTokenParser
                 // but an absolute path instead
             }
             $bundle = $templateRef instanceof TemplateReference ? $templateRef->get('bundle') : null;
-            if ($bundle && !in_array($bundle, $this->enabledBundles)) {
+            if ($bundle && ! in_array($bundle, $this->enabledBundles)) {
                 throw new InvalidBundleException($bundle, "the {% {$this->getTag()} %} tag", $templateRef->getLogicalName(), $this->enabledBundles);
             }
         }
@@ -66,13 +63,11 @@ class AsseticTokenParser extends BaseAsseticTokenParser
         return parent::parse($token);
     }
 
-    protected function createBodyNode(AssetInterface $asset, Node $body, array $inputs, array $filters, $name, array $attributes = array(), $lineno = 0, $tag = null)
-    {
+    protected function createBodyNode(AssetInterface $asset, Node $body, array $inputs, array $filters, $name, array $attributes = [], $lineno = 0, $tag = null): Node {
         return new AsseticNode($asset, $body, $inputs, $filters, $name, $attributes, $lineno, $tag);
     }
 
-    protected function createNode(AssetInterface $asset, NodeInterface $body, array $inputs, array $filters, $name, array $attributes = array(), $lineno = 0, $tag = null)
-    {
+    protected function createNode(AssetInterface $asset, NodeInterface $body, array $inputs, array $filters, $name, array $attributes = [], $lineno = 0, $tag = null): Node {
         return new AsseticNode($asset, $body, $inputs, $filters, $name, $attributes, $lineno, $tag);
     }
 }

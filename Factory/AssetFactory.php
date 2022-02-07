@@ -12,7 +12,7 @@
 namespace Symfony\Bundle\AsseticBundle\Factory;
 
 use Assetic\Factory\AssetFactory as BaseAssetFactory;
-use Assetic\Asset\AsseticInterface;
+use Assetic\Asset\AssetInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\HttpKernel\KernelInterface;
