@@ -28,7 +28,7 @@ class DefaultValueSupplier implements ValueSupplierInterface
         $this->container = $container;
     }
 
-    public function getValues()
+    public function getValues(): array
     {
         $request = $this->getCurrentRequest();
 

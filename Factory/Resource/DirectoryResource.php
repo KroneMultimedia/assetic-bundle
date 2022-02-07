@@ -42,7 +42,7 @@ class DirectoryResource extends BaseDirectoryResource
         parent::__construct($path, $pattern);
     }
 
-    public function getIterator()
+    public function getIterator(): \Traversable
     {
         return is_dir($this->path)
             ? new DirectoryResourceIterator($this->loader, $this->bundle, $this->path, $this->getInnerIterator())

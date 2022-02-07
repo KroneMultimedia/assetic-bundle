@@ -12,6 +12,7 @@
 namespace Symfony\Bundle\AsseticBundle\Factory;
 
 use Assetic\Factory\AssetFactory as BaseAssetFactory;
+use Assetic\Asset\AsseticInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\HttpKernel\KernelInterface;
@@ -51,7 +52,7 @@ class AssetFactory extends BaseAssetFactory
      * FIXME: This is a naive implementation of globs in that it doesn't
      * attempt to support bundle inheritance within the glob pattern itself.
      */
-    protected function parseInput($input, array $options = array())
+    protected function parseInput($input, array $options = array()): AssetInterface
     {
         $input = $this->parameterBag->resolveValue($input);
 

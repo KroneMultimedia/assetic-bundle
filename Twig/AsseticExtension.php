@@ -37,7 +37,7 @@ class AsseticExtension extends BaseAsseticExtension
         $this->enabledBundles = $enabledBundles;
     }
 
-    public function getTokenParsers()
+    public function getTokenParsers(): array
     {
         return array(
             $this->createTokenParser('javascripts', 'js/*.js'),
@@ -46,7 +46,7 @@ class AsseticExtension extends BaseAsseticExtension
         );
     }
 
-    public function getNodeVisitors()
+    public function getNodeVisitors(): array
     {
         return array(
             new AsseticNodeVisitor($this->templateNameParser, $this->enabledBundles),

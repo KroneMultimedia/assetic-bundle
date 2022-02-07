@@ -21,7 +21,7 @@ use Assetic\Factory\Resource\ResourceInterface;
  */
 class CoalescingDirectoryResource extends BaseCoalescingDirectoryResource
 {
-    protected function getRelativeName(ResourceInterface $file, ResourceInterface $directory)
+    protected function getRelativeName(ResourceInterface $file, ResourceInterface $directory): string
     {
         $name = (string) $file;
 
