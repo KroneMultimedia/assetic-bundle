@@ -29,7 +29,7 @@ use Twig\Template;
  *
  * @author Kris Wallsmith <kris@symfony.com>
  */
-class AsseticNodeVisitor {
+class AsseticNodeVisitor implements NodeVisitorInterface {
     private $templateNameParser;
     private $enabledBundles;
 
