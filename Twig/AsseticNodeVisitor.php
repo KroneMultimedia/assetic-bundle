@@ -22,6 +22,7 @@ use Twig\Node\Expression\FunctionExpression;
 use Twig\Node\Expression\GetAttrExpression;
 use Twig\Node\Expression\NameExpression;
 use Twig\Node\Node;
+use Twig\NodeVisitor\NodeVisitorInterface;
 use Twig\Template;
 
 /**
