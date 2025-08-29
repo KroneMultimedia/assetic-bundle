@@ -36,7 +36,7 @@ class WatchCommand extends AbstractCommand
         ;
     }
 
-    protected function execute(InputInterface $input, OutputInterface $stdout)
+    protected function execute(InputInterface $input, OutputInterface $stdout):int
     {
         // capture error output
         $stderr = $stdout instanceof ConsoleOutputInterface
