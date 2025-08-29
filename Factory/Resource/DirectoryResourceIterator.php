@@ -36,7 +36,7 @@ class DirectoryResourceIterator extends \RecursiveIteratorIterator
         parent::__construct($iterator);
     }
 
-    public function current()
+    public function current(): mixed
     {
         $file = parent::current();
 
