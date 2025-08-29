@@ -32,6 +32,8 @@ class AssetManagerCacheWarmer implements CacheWarmerInterface
     {
         $am = $this->container->get('assetic.asset_manager');
         $am->load();
+        
+        return [];
     }
 
     public function isOptional():bool
