@@ -28,13 +28,13 @@ class AssetManagerCacheWarmer implements CacheWarmerInterface
         $this->container = $container;
     }
 
-    public function warmUp($cacheDir)
+    public function warmUp($cacheDir, ?string $buildDir = null):array
     {
         $am = $this->container->get('assetic.asset_manager');
         $am->load();
     }
 
-    public function isOptional()
+    public function isOptional():bool
     {
         return true;
     }
