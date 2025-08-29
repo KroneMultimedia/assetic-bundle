@@ -22,7 +22,6 @@ use Twig\Node\Expression\FunctionExpression;
 use Twig\Node\Expression\GetAttrExpression;
 use Twig\Node\Expression\NameExpression;
 use Twig\Node\Node;
-use Twig\NodeVisitor\AbstractNodeVisitor;
 use Twig\Template;
 
 /**
@@ -30,13 +29,23 @@ use Twig\Template;
  *
  * @author Kris Wallsmith <kris@symfony.com>
  */
-class AsseticNodeVisitor extends AbstractNodeVisitor {
+class AsseticNodeVisitor {
     private $templateNameParser;
     private $enabledBundles;
 
     public function __construct(TemplateNameParserInterface $templateNameParser, array $enabledBundles) {
         $this->templateNameParser = $templateNameParser;
         $this->enabledBundles = $enabledBundles;
+    }
+
+    final public function enterNode(Node $node, Environment $env): Node
+    {
+        return $this->doEnterNode($node, $env);
+    }
+
+    final public function leaveNode(Node $node, Environment $env): ?Node
+    {
+        return $this->doLeaveNode($node, $env);
     }
 
     protected function doEnterNode(Node $node, Environment $env): Node {
