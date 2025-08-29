@@ -34,7 +34,7 @@ class AsseticController
     protected $enableProfiler;
     protected $profiler;
 
-    public function __construct(LazyAssetManager $am, CacheInterface $cache, $enableProfiler = false, Profiler $profiler = null)
+    public function __construct(LazyAssetManager $am, CacheInterface $cache, $enableProfiler = false, ?Profiler $profiler = null)
     {
         $this->am = $am;
         $this->cache = $cache;
