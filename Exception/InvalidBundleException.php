@@ -13,7 +13,7 @@ namespace Symfony\Bundle\AsseticBundle\Exception;
 
 class InvalidBundleException extends \LogicException
 {
-    public function __construct($bundle, $usage, $template, array $enabled, $code = 0, \Exception $previous = null)
+    public function __construct($bundle, $usage, $template, array $enabled, $code = 0, ?\Exception $previous = null)
     {
         $message = sprintf('You must add %s to the assetic.bundle config to use %s in %s.', $bundle, $usage, $template);
 
