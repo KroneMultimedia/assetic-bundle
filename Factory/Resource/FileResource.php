@@ -45,6 +45,14 @@ class FileResource implements ResourceInterface
         $this->path = $path;
     }
 
+    
+    /**
+     * Checks if a timestamp represents the latest resource.
+     *
+     * @param integer $timestamp A UNIX timestamp
+     *
+     * @return Boolean True if the timestamp is up to date
+     */
     public function isFresh($timestamp)
     {
         $r = new SFFileResource($this->path);
@@ -53,6 +61,12 @@ class FileResource implements ResourceInterface
         //return $fileResource->unwrap()->isFresh($timestamp);
     }
 
+    
+    /**
+     * Returns the content of the resource.
+     *
+     * @return string The content
+     */
     public function getContent()
     {
         $templateReference = $this->getTemplate();
