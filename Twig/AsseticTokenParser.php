@@ -37,7 +37,7 @@ class AsseticTokenParser extends BaseAsseticTokenParser {
         $this->templateNameParser = $templateNameParser;
     }
 
-    public function setEnabledBundles(array $enabledBundles = null) {
+    public function setEnabledBundles(?array $enabledBundles = null) {
         $this->enabledBundles = $enabledBundles;
     }
 
